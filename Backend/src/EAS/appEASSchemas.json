@@ -1,0 +1,17 @@
+{
+  "UserAttestationSchema": {
+    "schemaUID": "0xc5b8a94671d9242fc32614949d50dd5e194820ccaddbadf3e9b226d97681ad19",
+    "schemaStr": "bool isPhotographer, bytes32 customData",
+    "resolver": "0x36b48C8664911cA526A3ff26eD3DB473dEF04B23"
+  },
+  "PhotoPurchaseSchema": {
+    "schemaUID": "0xde533b5ac43fb205760acf0101c55bdf16a52e83643038c1afda78906b9bb583",
+    "schemaStr": "bytes32 resourceIdHash, bytes32 contentHash, bool isIpfs, bytes32 customData",
+    "resolver": "0x1f12b1afacc86074bBfc64b52fc2526469dd9D49"
+  },
+  "PhotoCreationSchema": {
+    "schemaUID": "0xc5041f1a0fc776faf48c239bc9b55b38dbb579705205611fd0c8da2905f9f865",
+    "schemaStr": "bytes32 resourceIdHash, bytes32 contentHash, bool isIpfs, uint256 ethTotalValue",
+    "resolver": "0xEA62361dDd9A7a276783980Bb87700bb0C275bAA"
+  }
+}
