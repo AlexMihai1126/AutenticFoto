@@ -213,15 +213,16 @@ router.get(
 
     try {
       const isMongoId = Types.ObjectId.isValid(identifier);
-
-      const query: any = { isRevoked: false }; // fa-l ca in filter cu record
+      const filter: Record<string, any> = {};
+      filter.isRevoked = false;
       if (isMongoId) {
-        query._id = identifier;
+        filter._id = identifier;
+        filter.attestationUID = { $exists: true };
       } else {
-        query.attestationUID = identifier;
+        filter.attestationUID = { $eq: identifier, $exists: true };
       }
 
-      const photoData = await PhotoModel.findOne(query)
+      const photoData = await PhotoModel.findOne(filter)
         .select(
           "userId title description category tags createdAt blurhashStr location aspectRatioType ethPriceStr attestationUID previewUrl"
         )
@@ -309,6 +310,7 @@ router.get(
 
       const userPhotos = await PhotoModel.find({
         userId: userData._id,
+        attestationUID: { $exists: true },
         isRevoked: false,
       })
         .select(
@@ -345,35 +347,33 @@ const searchValidatorMiddleware = [
     .withMessage("doar numere sunt permise."),
 ];
 
-router.get(
-  "/search",
-  searchValidatorMiddleware,
-  async (req: any, res: any) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { searchterm, limit = 10 } = matchedData(req, {
-      locations: ["query"],
-      includeOptionals: true,
-    }) as {
-      searchterm?: string;
-      limit?: number;
-    };
-
-    try {
-      const results = await PhotoModel.find({
-        title: { $regex: searchterm, $options: "i" },
-      })
-        .select("_id title")
-        .limit(limit);
-      res.status(200).json({ results });
-    } catch (err: any) {
-      logger.error(`${modulePrefix} eroare GET /searchByName:`, err);
-      return res.status(500).json({ error: "Eroare server" });
-    }
+router.get("/search", searchValidatorMiddleware, async (req: any, res: any) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
-);
+
+  const { searchterm, limit = 10 } = matchedData(req, {
+    locations: ["query"],
+    includeOptionals: true,
+  }) as {
+    searchterm?: string;
+    limit?: number;
+  };
+
+  try {
+    const results = await PhotoModel.find({
+      title: { $regex: searchterm, $options: "i" },
+      attestationUID: { $exists: true },
+      isRevoked: false,
+    })
+      .select("_id title")
+      .limit(limit);
+    res.status(200).json({ results });
+  } catch (err: any) {
+    logger.error(`${modulePrefix} eroare GET /searchByName:`, err);
+    return res.status(500).json({ error: "Eroare server" });
+  }
+});
 
 export default router;
