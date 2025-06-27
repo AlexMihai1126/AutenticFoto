@@ -30,7 +30,7 @@ Acest ghid descrie pașii de bază pentru utilizarea aplicației de licențiere 
 1. Dați click pe **„Conectează Wallet”**, fie din alerta de sub bara de navigare sau butonul din pagina de profil.
 2. Selectați contul dorit în MetaMask și confirmați conexiunea.
 3. La prima conectare, veți fi rugat să semnați un mesaj pentru a confirma identitatea.
-4. După semnare, platforma genera automat o atestare EAS pentru cont și va lega permanent portofelul pentru a permite interacțiunea cu funcționalitățile blockchain.
+4. După semnare, platforma va genera automat o atestare EAS pentru cont și va lega permanent portofelul pentru a permite interacțiunea cu funcționalitățile blockchain.
 
 ---
 
@@ -45,7 +45,7 @@ Acest ghid descrie pașii de bază pentru utilizarea aplicației de licențiere 
    - Locația unde a fost realizată fotografia (opțional)
    - Prețul în ETH
 3. După încărcare, aplicația va genera un hash unic (SHA-256) pentru imagine.
-4. Dați click pe **„Atestă”** din vizualizarea fotografiilor de pe profil. **Observație** - este necesar să aveți fonduri suficiente pentru a acoperi costurile tranzacției pe rețea (mai multe în secțiunea de **„Întrebări frecvente”** a aplicației)
+4. Dați click pe butonul **„Atestă”** din vizualizarea fotografiilor de pe profil. **Observație** - este necesar să aveți fonduri suficiente pentru a acoperi costurile tranzacției pe rețea (mai multe în secțiunea de **„Întrebări frecvente”** a aplicației)
 5. Aprobați tranzacția în MetaMask pentru a înregistra atestarea on-chain.
 6. După confirmare, fotografia devine publică și va fi la vânzare imediat.
 
@@ -76,10 +76,11 @@ Acest ghid descrie pașii de bază pentru utilizarea aplicației de licențiere 
 - Toate interacțiunile blockchain sunt publice și anonime.
 - Utilizatorii trebuie să aibă un portofel MetaMask conectat și asociat contului pentru a putea cumpăra sau vinde imagini.
 - Plata se face prin rețeaua Ethereum, prin moneda ETH.
+- Platforma este o aplicație demonstrativă, rulând pe rețeaua de test Ethereum Sepolia, fără costuri reale.
 
 ---
 
-## Despre proiect
+## 📂 Despre proiect
 
 - Aplicație realizată de către absolventul Mihai Alexandru al Universității din București, Facultatea de Matematică și Informatică, specializarea Calculatoare și Tehnologia Informației, în cadrul proiectului de licență „Platformă descentralizată pentru gestionarea licențelor de fotografie folosind tehnologia Blockchain și Web3”
 - Proiectul a fost realizat din pasiunea pentru tehnologii moderne în aplicațiile web și soluții inovatoare pentru licențierea conținutului digital, utilizând tehnologii Blockchain.
@@ -92,7 +93,9 @@ Acest ghid descrie pașii de bază pentru utilizarea aplicației de licențiere 
   - TypeScript (Backend, UI, listener)
   - Solidity (smart contracts pe rețeaua Ethereum)
 
-- Cunoștiințe dobândite din realizarea proiectului
+---
+
+## 🎓 Cunoștințe dobândite din realizarea proiectului
 
    - Înțelegerea arhitecturii aplicațiilor web full-stack și gestionarea unui proiect complet (frontend + backend + blockchain)
    - Scrierea și implementarea de contracte inteligente în limbajul Solidity, pe rețeaua Ethereum
@@ -118,4 +121,4 @@ Acest ghid descrie pașii de bază pentru utilizarea aplicației de licențiere 
    - Scrierea de teste folosind `Jest`
    - Testare manuală a API-urilor cu `Postman`
    - Utilizarea pachetului `concurrently` pentru rularea simultană a serviciilor
-   - Configurarea mediului de lucru cu fișiere `.env` pentru gestionarea variabilelor de mediu și cheilor pentru serviciile externe
+   - Configurarea mediului de lucru cu fișiere `.env` pentru gestionarea variabilelor de mediu și a cheilor de autentificare pentru serviciile externe
