@@ -211,6 +211,7 @@ export default function UploadPage() {
 
       setSubmitSuccess(res.data?.message || "Fișier încărcat.");
       formikHelpers.resetForm();
+      toast.success("Fotografia a fost încărcată.");
       router.push("/myaccount/photos");
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
